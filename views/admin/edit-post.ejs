@@ -1,0 +1,25 @@
+<a href="/dashboard">&larr; Back</a>
+
+<div class="admin-title">
+  <h2>Edit Post</h2>
+  <form action="/delete-post/<%= post._id %>?_method=DELETE" method="post">
+    <input type="submit" value="Delete" class="btn btn-danger">
+  </form>
+</div>
+
+<form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
+  <label for="title"><b>Title</b></label>
+  <input type="text" placeholder="Post Title" name="title" value="<%= data.title %>">
+  <label for="category"><b>Category</b></label>
+  <select name="category">
+    <option value="">select category</option>
+    <% cats.forEach(cat=> { %>
+      <option value="<%= cat._id %>" <% if(data.categoryid==cat._id) { %> selected<% } %>>
+        <%= cat.title %>
+      </option>
+      <% } )%>
+  </select>
+  <label for="body"><b>Content</b></label>
+  <textarea name="body" cols="50" rows="10"><%= data.body %></textarea>
+  <input type="submit" value="Update" class="btn">
+</form>

@@ -1,0 +1,25 @@
+<div class="admin-title">
+  <h2>Add New Post</h2>
+</div>
+
+<div class="mb-3">
+  <a href="/dashboard" class="white">&larr; Back</a>
+</div>
+
+<form class="gy-3" action="/add-post" method="post">
+  <label for="title" class="form-label mt-3"><b>Title</b></label>
+  <input type="text" class="form-control mt-1" placeholder="Post Title" name="title">
+  <label for="category" class="form-label mt-3"><b>Category</b></label>
+  <select name="category" class="form-select mt-1">
+    <option value="">select category</option>
+
+    <% cats.forEach(cat=> { %>
+      <option value="<%= cat._id %>">
+        <%= cat.title %>
+      </option>
+      <% } )%>
+  </select>
+  <label for="body" class="form-label mt-3"><b>Content</b></label>
+  <textarea id="tincymce" name="body" class="form-control mt-1" cols="50" rows="10"></textarea>
+  <input type="submit" value="Add" class="btn">
+</form>
